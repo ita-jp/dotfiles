@@ -1,0 +1,88 @@
+# Usage in ~/.gitconfig
+#
+# [include]
+#  path = ~/ghq/github.com/ita-jp/dotfiles/.gitconfig.include
+#
+# Create symbolic link in /usr/bin for diff-highlight
+#   * Ubuntu
+#       $ sudo chmod +x /usr/share/doc/git/contrib/diff-highlight/diff-highlight
+#       $ sudo ln -s /usr/share/doc/git/contrib/diff-highlight/diff-highlight /usr/local/bin/diff-highlight
+#   * Mac
+#       $ sudo ln -s /usr/local/share/git-core/contrib/diff-highlight/diff-highlight /usr/local/bin/diff-highlight
+#       or
+#       $ sudo ln -s /opt/homebrew/share/git-core/contrib/diff-highlight/diff-highlight /usr/local/bin/diff-highlight
+
+[core]
+    editor = vim -u NONE -N
+
+[push]
+    default = current
+
+[pull]
+    rebase = true
+
+[alias]
+    s = status
+    ss = status --short
+    sh = show
+    a = add
+
+    co = checkout
+    cob = checkout -b
+    ci = commit
+    cim = commit -m
+    cia = commit --amend
+    cian = commit --amend --no-edit
+
+    l = log
+    lo = log --oneline
+    ls = log --stat
+    lso = log --stat --oneline
+    lss = log --shortstat
+    lsso = log --shortstat --oneline
+    lp = log -p
+    la = log --pretty="format:[%ad] %h (%an): %s" --date=short
+
+    com = checkout master
+    cod = checkout develop
+    cos = checkout staging
+
+    pr = pull --rebase
+    po = push origin
+    pof = push -f origin
+    pou = push -u origin
+
+    d  = diff
+    dh = diff HEAD
+    dc = diff --cached
+    d1 = diff HEAD~
+    d2 = diff HEAD~~
+    d3 = diff HEAD~~~
+    d4 = diff HEAD~~~~
+    d5 = diff HEAD~~~~~
+
+    rbc = rebase --continue
+    rba = rebase --abort
+    rbi = rebase -i
+    rbi1 = rebase -i HEAD^
+    rbi2 = rebase -i HEAD^^
+    rbi3 = rebase -i HEAD^^^
+    rbi4 = rebase -i HEAD^^^^
+    rbi5 = rebase -i HEAD^^^^^
+
+    rs = restore --staged
+    rw = restore --worktree
+
+    g = grep
+    gn = grep -n
+
+    cb = !git co $(git branch --format='%(refname:short)' | peco)
+    b = "!f() { git branch | peco; }; f"
+
+    br = branch
+    us = reset HEAD
+
+[pager]
+    log = /usr/local/bin/diff-highlight | less
+    show = /usr/local/bin/diff-highlight | less
+    diff = /usr/local/bin/diff-highlight | less
