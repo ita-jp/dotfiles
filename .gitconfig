@@ -1,7 +1,7 @@
 # Usage in ~/.gitconfig
 #
 # [include]
-#  path = ~/ghq/github.com/ita-jp/dotfiles/.gitconfig.include
+#  path = ~/ghq/github.com/ita-jp/dotfiles/.gitconfig
 #
 # Create symbolic link in /usr/bin for diff-highlight
 #   * Ubuntu

@@ -1,7 +1,7 @@
 # Add the following line in ~/.zshrc
 #
 # ```zsh
-# . ~/ghq/github.com/ita-jp/dotfiles/.zshrc.include
+# . ~/ghq/github.com/ita-jp/dotfiles/.zshrc
 # ```
 #
 
