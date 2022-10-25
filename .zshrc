@@ -14,6 +14,8 @@ alias k='kubectl'
 
 alias -g B='$(git branch -a --format="%(refname:short)" | peco --prompt "GIT BRANCH >")'
 alias -g CH='$(git log --oneline --branches | peco --prompt "GIT COMMIT HASH >" | cut -d" " -f1)'
+alias -g P='| peco'
+alias -g G='| grep --color'
 
 HISTSIZE=1000000000
 SAVEHIST=1000000000
