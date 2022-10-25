@@ -10,6 +10,7 @@ function cdrepo() {
 }
 
 alias g='git'
+alias k='kubectl'
 
 alias -g B='$(git branch -a --format="%(refname:short)" | peco --prompt "GIT BRANCH >")'
 alias -g CH='$(git log --oneline --branches | peco --prompt "GIT COMMIT HASH >" | cut -d" " -f1)'
@@ -31,3 +32,4 @@ function select-history-with-peco() {
 }
 zle -N select-history-with-peco
 bindkey '^r' select-history-with-peco
+
