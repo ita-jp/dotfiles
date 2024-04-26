@@ -9,6 +9,10 @@ function cdrepo() {
     cd $(ghq list -p | peco)
 }
 
+function fac() {
+    cat ~/ghq/github.com/ita-jp/dotfiles/command.list | peco | bash
+}
+
 alias g='git'
 alias k='kubectl'
 
