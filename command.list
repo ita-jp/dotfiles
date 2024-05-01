@@ -1,2 +1,3 @@
 echo "github clone from cli using peco"; ghq get "$(gh repo list --limit 999 --json sshUrl | jq -r '.[].sshUrl' | peco)"
+gh repo create --public new_repo_name
 gh auth login
