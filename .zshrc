@@ -40,3 +40,14 @@ function select-history-with-peco() {
 zle -N select-history-with-peco
 bindkey '^r' select-history-with-peco
 
+cd_git_root() {
+    local root_dir=$(git rev-parse --show-toplevel 2> /dev/null)
+    if [[ -n $root_dir ]]; then
+        cd $root_dir
+    else
+        echo "This is not a git repository."
+    fi
+}
+
+alias cdgr='cd_git_root'
+
