@@ -15,6 +15,7 @@ function fac() {
 
 alias g='git'
 alias k='kubectl'
+alias lzd='lazydocker'
 
 alias -g B='$(git branch -a --format="%(refname:short)" | peco --prompt "GIT BRANCH >")'
 alias -g CH='$(git log --oneline --branches | peco --prompt "GIT COMMIT HASH >" | cut -d" " -f1)'
