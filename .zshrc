@@ -51,3 +51,6 @@ cd_git_root() {
 
 alias cdgr='cd_git_root'
 
+function ssha() {
+    ssh $(cat ~/.ssh/config | grep 'Host ' | cut -d' ' -f2 | fzf --tmux center)
+}
