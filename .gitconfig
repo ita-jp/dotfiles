@@ -26,6 +26,7 @@
     ss = status --short
     sh = show
     a = add
+    aa = add .
 
     co = checkout
     cob = checkout -b
