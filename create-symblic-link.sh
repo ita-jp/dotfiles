@@ -3,25 +3,40 @@
 cd "$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 base_dir="$(pwd)"
-echo "base_dir = ${base_dir}"
 
 files=(
   ".tmux.conf"
+  ".vim"
 )
+
+echo
+echo "Start.."
 
 for file in "${files[@]}"; do
   target="$HOME/$file"
   source="$base_dir/$file"
 
-  # backup
-  if [ -e "$target" ] || [ -L "$target" ]; then
-    echo "Create backup: ${target}.bak"
+  echo
+  echo "$file:"
+  echo "  source: $source"
+  echo "  target: $target"
+
+  if [ -L "$target" ]; then
+    echo "  Symbolic link already exists: $target -> $(readlink $target)"
+    echo "  Skip"
+    continue
+  fi
+
+  if [ -e "$target" ]; then
+    echo "  Create backup: ${target}.bak"
     mv "$target" "${target}.bak"
   fi
 
-
   ln -s "$source" "$target"
-  echo "Create symbolic link: $(ls -la $HOME | grep '$(basename $target) ' | awk '{print $9, $10, $11}')"
+  echo "  Create symbolic link: $target -> $(readlink $target)" 
 done
 
-echo "Finish all symbolic links."
+echo
+echo "Finish"
+echo
+
