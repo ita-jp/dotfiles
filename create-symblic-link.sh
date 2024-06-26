@@ -21,7 +21,7 @@ for file in "${files[@]}"; do
 
 
   ln -s "$source" "$target"
-  echo "Create symbolic link: $(ls -la $HOME | grep $(basename $target) | awk '{print $9, $10, $11}')"
+  echo "Create symbolic link: $(ls -la $HOME | grep '$(basename $target) ' | awk '{print $9, $10, $11}')"
 done
 
 echo "Finish all symbolic links."
