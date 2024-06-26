@@ -21,9 +21,13 @@ for file in "${files[@]}"; do
   echo "  source: $source"
   echo "  target: $target"
 
+  if [ ! -e "$source" ]; then
+    echo -e "  [ \033[1;31mERROR\033[0m ] Source file/directory does not exist: $source"
+    continue
+  fi
+
   if [ -L "$target" ]; then
-    echo "  Symbolic link already exists: $target -> $(readlink $target)"
-    echo "  Skip"
+    echo -e "  [ \033[1;34mSKIP\033[0m ] Symbolic link already exists: $target -> $(readlink $target)"
     continue
   fi
 
@@ -33,7 +37,7 @@ for file in "${files[@]}"; do
   fi
 
   ln -s "$source" "$target"
-  echo "  Create symbolic link: $target -> $(readlink $target)" 
+  echo -e "  [ \033[1;32mSUCCESS\033[0m ] Create symbolic link: $target -> $(readlink $target)" 
 done
 
 echo
