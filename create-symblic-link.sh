@@ -6,7 +6,7 @@ base_dir="$(pwd)"
 
 files=(
   ".tmux.conf"
-  ".vim"
+  ".vimrc"
 )
 
 echo
