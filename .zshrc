@@ -60,7 +60,12 @@ source <(fzf --zsh)
 # zoxide (https://github.com/ajeetdsouza/zoxide)
 #
 eval "$(zoxide init zsh)"
-alias cd='z'
+if command -v z >/dev/null 2>&1; then
+    alias cd='z'
+else
+    echo "'z' command not found. Keeping 'cd' as is." >&2
+    echo "You can install it using: brew install z" >&2
+fi
 
 #
 # eza (https://github.com/eza-community/eza)
