@@ -5,10 +5,6 @@
 # ```
 #
 
-function cdrepo() {
-    cd $(ghq list -p | peco)
-}
-
 function fac() {
     cat ~/ghq/github.com/ita-jp/dotfiles/command.list | peco | bash
 }
@@ -21,9 +17,6 @@ alias lzd='lazydocker'
 alias lzg='lazygit'
 alias ff="fzf --preview 'bat --style=numbers --color=always {}'"
 
-alias -g B='$(git branch -a --format="%(refname:short)" | peco --prompt "GIT BRANCH >")'
-alias -g CH='$(git log --oneline --branches | peco --prompt "GIT COMMIT HASH >" | cut -d" " -f1)'
-alias -g P='| peco'
 alias -g G='| grep --color'
 alias -g PC='| pbcopy'
 
@@ -36,14 +29,6 @@ setopt hist_ignore_space
 setopt hist_reduce_blanks
 setopt hist_save_no_dups
 setopt inc_append_history
-
-function select-history-with-peco() {
-    BUFFER="`history -r -n 1 | peco --query "$BUFFER"`"
-    CURSOR=$#BUFFER
-    zle clear-screen
-}
-zle -N select-history-with-peco
-bindkey '^r' select-history-with-peco
 
 cd_git_root() {
     local root_dir=$(git rev-parse --show-toplevel 2> /dev/null)
