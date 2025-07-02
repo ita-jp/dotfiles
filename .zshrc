@@ -70,3 +70,36 @@ source <(fzf --zsh)
 # zoxide (https://github.com/ajeetdsouza/zoxide)
 #
 eval "$(zoxide init zsh)"
+
+#
+# eza (https://github.com/eza-community/eza)
+#
+# アイコン表示には terminal にフォントの設定が必要
+#
+# 1. brew install --cask font-jetbrains-mono-nerd-font を実行
+# 2. Terminal.app > 設定（⌘ + ,）> プロファイル > テキスト > フォントの変更
+# 3. JetBrainsMono Nerd Font Mono を選択
+if type brew &>/dev/null; then
+    FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
+    autoload -Uz compinit
+    compinit
+fi
+
+# Replace ls with eza
+alias ls='eza --group-directories-first --icons --git'
+alias ll='eza -l --group-directories-first --icons --git'
+alias la='eza -la --group-directories-first --icons --git'
+alias lt='eza -T --level=2 --icons'
+alias llt='eza -lT --icons'
+
+#
+# ghq + fzf
+#
+cdrepo() {
+    local dir
+    dir=$(ghq list -p | fzf --preview="eza -TL 1 --git --icons {}" --height=40%)
+    if [ -n "$dir" ]; then
+        cd "$dir"
+    fi
+}
+
