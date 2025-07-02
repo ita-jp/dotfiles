@@ -13,14 +13,19 @@ function fac() {
     cat ~/ghq/github.com/ita-jp/dotfiles/command.list | peco | bash
 }
 
+alias n='nvim'
 alias g='git'
+alias d='docker'
 alias k='kubectl'
 alias lzd='lazydocker'
+alias lzg='lazygit'
+alias ff="fzf --preview 'bat --style=numbers --color=always {}'"
 
 alias -g B='$(git branch -a --format="%(refname:short)" | peco --prompt "GIT BRANCH >")'
 alias -g CH='$(git log --oneline --branches | peco --prompt "GIT COMMIT HASH >" | cut -d" " -f1)'
 alias -g P='| peco'
 alias -g G='| grep --color'
+alias -g PC='| pbcopy'
 
 HISTSIZE=1000000000
 SAVEHIST=1000000000
