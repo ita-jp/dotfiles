@@ -86,7 +86,7 @@ alias llt='eza -lT --icons'
 #
 # ghq + fzf
 #
-cdrepo() {
+cdr() {
     local dir
     dir=$(ghq list -p | fzf --preview="eza -TL 1 --git --icons {}" --height=40%)
     if [ -n "$dir" ]; then
