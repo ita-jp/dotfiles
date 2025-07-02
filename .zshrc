@@ -70,6 +70,7 @@ source <(fzf --zsh)
 # zoxide (https://github.com/ajeetdsouza/zoxide)
 #
 eval "$(zoxide init zsh)"
+alias cd='z'
 
 #
 # eza (https://github.com/eza-community/eza)
