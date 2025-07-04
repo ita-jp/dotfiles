@@ -98,3 +98,10 @@ cdr() {
         cd "$dir"
     fi
 }
+
+#
+# Go to GitHub
+#
+gtg() {
+    open $(git remote get-url origin | sed 's#ssh://git@github.com/#https://github.com/#' | sed 's#\.git$##')
+}
