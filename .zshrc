@@ -119,3 +119,9 @@ eval "$(mcfly init zsh)"
 #
 command -v lazydocker >/dev/null 2>&1 || brew install lazydocker
 alias lzd='lazydocker'
+
+#
+# lazygit (https://github.com/jesseduffield/lazygit)
+#
+command -v lazygit >/dev/null 2>&1 || brew install lazygit
+alias lg='lazygit'
