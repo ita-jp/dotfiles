@@ -59,13 +59,9 @@ source <(fzf --zsh)
 #
 # zoxide (https://github.com/ajeetdsouza/zoxide)
 #
+command -v zoxide >/dev/null 2>&1 || brew install zoxide
 eval "$(zoxide init zsh)"
-if command -v z >/dev/null 2>&1; then
-    alias cd='z'
-else
-    echo "'z' command not found. Keeping 'cd' as is." >&2
-    echo "You can install it using: brew install z" >&2
-fi
+alias cd='z'
 
 #
 # eza (https://github.com/eza-community/eza)
@@ -111,4 +107,10 @@ gtg() {
 #
 command -v bat >/dev/null 2>&1 || brew install bat bat-extras
 alias cat='bat'
+
+#
+# mcfly (https://github.com/cantino/mcfly)
+#
+command -v mcfly >/dev/null 2>&1 || brew install mcfly
+eval "$(mcfly init zsh)"
 
