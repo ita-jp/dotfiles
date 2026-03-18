@@ -105,3 +105,10 @@ cdr() {
 gtg() {
     open $(git remote get-url origin | sed 's#ssh://git@github.com/#https://github.com/#' | sed 's#\.git$##')
 }
+
+#
+# bat
+#
+command -v bat >/dev/null 2>&1 || brew install bat bat-extras
+alias cat='bat'
+
