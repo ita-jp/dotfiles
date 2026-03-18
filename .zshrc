@@ -114,3 +114,8 @@ alias cat='bat'
 command -v mcfly >/dev/null 2>&1 || brew install mcfly
 eval "$(mcfly init zsh)"
 
+#
+# lazydocker (https://github.com/jesseduffield/lazydocker)
+#
+command -v lazydocker >/dev/null 2>&1 || brew install lazydocker
+alias lzd='lazydocker'
