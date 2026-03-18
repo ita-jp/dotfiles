@@ -125,3 +125,15 @@ alias lzd='lazydocker'
 #
 command -v lazygit >/dev/null 2>&1 || brew install lazygit
 alias lg='lazygit'
+
+#
+# yazi (https://github.com/sxyazi/yazi)
+#
+command -v yazi >/dev/null 2>&1 || brew install yazi ffmpeg-full sevenzip jq poppler fd ripgrep fzf zoxide resvg imagemagick-full font-symbols-only-nerd-font
+function y() {
+	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+	command yazi "$@" --cwd-file="$tmp"
+	IFS= read -r -d '' cwd < "$tmp"
+	[ "$cwd" != "$PWD" ] && [ -d "$cwd" ] && builtin cd -- "$cwd"
+	rm -f -- "$tmp"
+}
