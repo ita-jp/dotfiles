@@ -144,3 +144,9 @@ function y() {
 command -v direnv >/dev/null 2>&1 || brew install direnv
 eval "$(direnv hook zsh)"
 
+#
+# zellij (https://zellij.dev/)
+#
+command -v zellij >/dev/null 2>&1 || brew install zellij
+eval "$(zellij setup --generate-auto-start zsh)"
+
