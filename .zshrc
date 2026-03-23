@@ -137,3 +137,10 @@ function y() {
 	[ "$cwd" != "$PWD" ] && [ -d "$cwd" ] && builtin cd -- "$cwd"
 	rm -f -- "$tmp"
 }
+
+#
+# direnv (https://direnv.net/)
+#
+command -v direnv >/dev/null 2>&1 || brew install direnv
+eval "$(direnv hook zsh)"
+
