@@ -150,3 +150,23 @@ eval "$(direnv hook zsh)"
 command -v zellij >/dev/null 2>&1 || brew install zellij
 eval "$(zellij setup --generate-auto-start zsh)"
 
+#
+# zsh-autosuggestions
+#
+[[ -f $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh ]] || brew install zsh-autosuggestions
+source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+
+#
+# zsh-completions
+#
+brew --prefix zsh-completions >/dev/null 2>&1 || brew install zsh-completions
+fpath=($(brew --prefix)/share/zsh-completions $fpath)
+autoload -U compinit
+compinit -u
+
+#
+# zsh-syntax-highlighting
+#
+[[ -f $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]] || brew install zsh-syntax-highlighting
+source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
