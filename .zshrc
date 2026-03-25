@@ -54,6 +54,7 @@ alias kamal='docker run -it --rm -v "${PWD}:/workdir" -v "/run/host-services/ssh
 #
 # fzf (https://github.com/junegunn/fzf)
 #
+command -v fzf >/dev/null 2>&1 || brew install fzf
 source <(fzf --zsh)
 
 #
