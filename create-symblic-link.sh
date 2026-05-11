@@ -7,6 +7,7 @@ base_dir="$(pwd)"
 files=(
   ".tmux.conf"
   ".vimrc"
+  ".config/zellij/config.kdl"
 )
 
 echo
@@ -36,11 +37,11 @@ for file in "${files[@]}"; do
     mv "$target" "${target}.bak"
   fi
 
+  mkdir -p "$(dirname "$target")"
   ln -s "$source" "$target"
-  echo -e "  [ \033[1;32mSUCCESS\033[0m ] Create symbolic link: $target -> $(readlink $target)" 
+  echo -e "  [ \033[1;32mSUCCESS\033[0m ] Create symbolic link: $target -> $(readlink "$target")" 
 done
 
 echo
 echo "Finish"
 echo
-
