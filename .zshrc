@@ -150,7 +150,7 @@ eval "$(direnv hook zsh)"
 # zellij (https://zellij.dev/)
 #
 command -v zellij >/dev/null 2>&1 || brew install zellij
-eval "$(zellij setup --generate-auto-start zsh)"
+#eval "$(zellij setup --generate-auto-start zsh)"
 
 #
 # zsh-autosuggestions
