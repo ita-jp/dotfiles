@@ -72,6 +72,7 @@ alias cd='z'
 # 1. brew install --cask font-jetbrains-mono-nerd-font を実行
 # 2. Terminal.app > 設定（⌘ + ,）> プロファイル > テキスト > フォントの変更
 # 3. JetBrainsMono Nerd Font Mono を選択
+command -v eza >/dev/null 2>&1 || brew install eza
 if type brew &>/dev/null; then
     FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
     autoload -Uz compinit
