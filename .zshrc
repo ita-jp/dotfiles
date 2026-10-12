@@ -67,11 +67,41 @@ alias cd='z'
 #
 # eza (https://github.com/eza-community/eza)
 #
+
 # アイコン表示には terminal にフォントの設定が必要
 #
 # 1. brew install --cask font-jetbrains-mono-nerd-font を実行
 # 2. Terminal.app > 設定（⌘ + ,）> プロファイル > テキスト > フォントの変更
 # 3. JetBrainsMono Nerd Font Mono を選択
+
+# アイコン表示用のフォントをインストールし、Terminal.app に設定
+if brew list --cask font-jetbrains-mono-nerd-font >/dev/null 2>&1 || brew install --cask font-jetbrains-mono-nerd-font; then
+    if [[ "$TERM_PROGRAM" == "Apple_Terminal" ]]; then
+        osascript - "$(tty)" <<'APPLESCRIPT'
+on run argv
+    set targetFont to "JetBrainsMono Nerd Font Mono"
+    set currentTTY to item 1 of argv
+    tell application "Terminal"
+        if font name of default settings is not targetFont then
+            set font name of default settings to targetFont
+        end if
+        if font name of startup settings is not targetFont then
+            set font name of startup settings to targetFont
+        end if
+        repeat with terminalWindow in windows
+            repeat with terminalTab in tabs of terminalWindow
+                if tty of terminalTab is currentTTY then
+                    if font name of current settings of terminalTab is not targetFont then
+                        set font name of current settings of terminalTab to targetFont
+                    end if
+                end if
+            end repeat
+        end repeat
+    end tell
+end run
+APPLESCRIPT
+    fi
+fi
 command -v eza >/dev/null 2>&1 || brew install eza
 if type brew &>/dev/null; then
     FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
